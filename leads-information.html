@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="lead-registration.css">
+    <title>Abc leads information</title>
+    <title>Document</title>
+</head>
+<body class="leads-information-body">
+    
+    <div class="container">
+        <h1 class="table-heading">Leads informations</h1>
+ <table>
+     <thead>
+        <tr class="row">
+           
+            <th class="leads-head1"> Full name</th>
+            <th class="leads-head2"> Email </th>
+            <th class="leads-head3"> Phone</th>
+            <th class="leads-head5"> Selected course</th>
+            <th class="leads-head6"> About Him</th>
+            <th class="leads-head7"> Edit/Delete</th> 
+        </tr>
+     </thead>    
+     <tbody>
+        <tr id="showUsers">
+        </tr>
+     </tbody>
+      </table>
+       <script src="lead-script.js"></script>
+       <script>
+           
+    showData();
+    function showData()
+    {
+        let user_records=new Array();
+        user_records=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+        if(user_records)
+        {
+            for(let i=0;i<user_records.length;i++)
+            {
+    
+                let addTr=document.createElement('tr','i');
+                
+                addTr.className="row";
+                addTr.innerHTML=('<td class="leads">'+user_records[i].full_name+'</td><td class="leads">'+user_records[i].email+'</td><td class="leads">'+user_records[i].phone+'</td><td class="leads">'+user_records[i].input+'</td><td class="leads">'+user_records[i].about_him+'</td><td class="leads"><button class="edit" onclick="editData()">Edit</button><br/><button class="delete" onclick="deleteData('+i+')">Delete</button></td>');
+                
+                document.getElementById("showUsers").appendChild(addTr) 
+            }
+        }
+        deleteData(i)
+        function deleteData(i){
+            let addTr=document.createElement('tr');
+            deleteTr.className="row";
+               
+        }    
+    
+    }
+       </script>
+    </body>
+    </html>
